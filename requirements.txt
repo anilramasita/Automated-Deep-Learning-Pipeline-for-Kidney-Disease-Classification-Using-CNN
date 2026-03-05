@@ -4,7 +4,6 @@ pandas
 dvc
 mlflow==2.2.2
 notebook==6.5.4
-pywinpty==1.1.6
 numpy
 matplotlib
 seaborn
