@@ -1,13 +1,11 @@
-import os
 from cnnClassifier import logger
 from cnnClassifier.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
 from cnnClassifier.pipeline.stage_02_prepare_base_model import PrepareBaseModelTrainingPipeline
 from cnnClassifier.pipeline.stage_03_model_training import ModelTrainingPipeline
 from cnnClassifier.pipeline.stage_04_model_evaluation import EvaluationPipeline
 
-os.environ["MLFLOW_TRACKING_URI"] = "https://dagshub.com/anilramasita/Automated-Deep-Learning-Pipeline-for-Kidney-Disease-Classification-Using-CNN.mlflow"
-os.environ["MLFLOW_TRACKING_USERNAME"] = "anilramasita"
-os.environ["MLFLOW_TRACKING_PASSWORD"] = "5c3326d9cf003c26f090661d91cfd9851557f359"
+from dotenv import load_dotenv
+load_dotenv()
 
 
 STAGE_NAME = "Data Ingestion stage"

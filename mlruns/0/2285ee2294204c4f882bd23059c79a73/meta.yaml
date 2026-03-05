@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Amulya/OneDrive/Documents/MajorProject/Kidney-Disease-Classification-Deep-Learning-Project/mlruns/0/2285ee2294204c4f882bd23059c79a73/artifacts
+end_time: 1772679924381
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2285ee2294204c4f882bd23059c79a73
+run_name: trusting-smelt-999
+run_uuid: 2285ee2294204c4f882bd23059c79a73
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1772679903409
+status: 3
+tags: []
+user_id: Amulya
