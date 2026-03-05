@@ -1,3 +1,5 @@
+import os
+import shutil
 from cnnClassifier.config.configuration import ConfigurationManager
 from cnnClassifier.components.model_evaluation_mlflow import Evaluation
 from cnnClassifier import logger
@@ -16,7 +18,13 @@ class EvaluationPipeline:
         eval_config = config.get_evaluation_config()
         evaluation = Evaluation(eval_config)
         evaluation.evaluation()
-        evaluation.log_into_mlflow()
+        evaluation.save_score()
+        #evaluation.log_into_mlflow()
+
+        # Copy evaluated model to root model folder for deployment
+        os.makedirs("model", exist_ok=True)
+        shutil.copy("artifacts/training/model.h5", "model/model.h5")
+        logger.info("Model copied to model/model.h5 for deployment")
 
 
 
