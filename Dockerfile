@@ -1,6 +1,10 @@
 FROM python:3.9-slim-buster
 
-RUN apt update -y && apt install awscli -y
+RUN apt-get update -y && apt-get install -y --no-install-recommends \
+    awscli \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 COPY . /app
