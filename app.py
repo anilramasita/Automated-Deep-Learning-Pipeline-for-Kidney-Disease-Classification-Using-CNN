@@ -18,6 +18,8 @@ class ClientApp:
         self.filename = "inputImage.jpg"
         self.classifier = PredictionPipeline(self.filename)
 
+# Instantiate OUTSIDE main block — works in Docker + Gunicorn
+clApp = ClientApp()
 
 @app.route("/", methods=['GET'])
 @cross_origin()
@@ -39,15 +41,16 @@ def trainRoute():
 @app.route("/predict", methods=['POST'])
 @cross_origin()
 def predictRoute():
-    image = request.json['image']
-    decodeImage(image, clApp.filename)
-    result = clApp.classifier.predict()
-    return jsonify(result)
-
+    try:
+        image = request.json['image']
+        decodeImage(image, clApp.filename)
+        result = clApp.classifier.predict()
+        return jsonify(result)
+    except Exception as e:
+        return jsonify([{"image": "error", "message": "Something went wrong. Please try again."}]), 500
 
 if __name__ == "__main__":
-    clApp = ClientApp()
-
     app.run(host='0.0.0.0', port=8080) #for AWS
+
 
 
